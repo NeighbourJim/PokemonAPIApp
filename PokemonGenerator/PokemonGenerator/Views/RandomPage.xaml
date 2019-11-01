@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PokemonGenerator.Views.RandomPage">
+    <ContentPage.Content>
+        <RelativeLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Margin="2">
+                <Grid Margin="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="15*"/>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="15*"/>
+                    </Grid.RowDefinitions>
+
+                    <Label x:Name="nameLabel" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" 
+                           HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Center" 
+                           FontAttributes="Bold" 
+                           Text=""/>
+
+                    <!--#region Sprite, Activity Indicator, Type Label-->
+                    <Image x:Name="spriteImage" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Start" Scale="1.5" >
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                    <StackLayout Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="0,15,0,0">
+                        <Label x:Name="typeLabel" FontAttributes="Bold">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span x:Name="pTypeSpan"/>
+                                    <Span x:Name="typeSeparator"/>
+                                    <Span x:Name="sTypeSpan"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+                    <!--#endregion-->
+                    
+                    <!--#region Stat Labels-->
+                    <Label x:Name="hpLabel" Text="" Grid.Row="3" Grid.Column="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" VerticalOptions="Start">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span x:Name="hpTitleSpan" FontAttributes="Bold"/>
+                                <Span x:Name="hpValueSpan"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label x:Name="atkLabel" Text="" Grid.Row="4" Grid.Column="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" VerticalOptions="Start">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span x:Name="atkTitleSpan" FontAttributes="Bold"/>
+                                <Span x:Name="atkValueSpan"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label x:Name="defLabel" Text="" Grid.Row="5" Grid.Column="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" VerticalOptions="Start">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span x:Name="defTitleSpan" FontAttributes="Bold"/>
+                                <Span x:Name="defValueSpan"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <Label x:Name="spAtkLabel" Text="" Grid.Row="3" Grid.Column="1" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" VerticalOptions="Start">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span x:Name="spAtkTitleSpan" FontAttributes="Bold"/>
+                                <Span x:Name="spAtkValueSpan"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label x:Name="spDefLabel" Text="" Grid.Row="4" Grid.Column="1" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" VerticalOptions="Start">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span x:Name="spDefTitleSpan" FontAttributes="Bold"/>
+                                <Span x:Name="spDefValueSpan"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label x:Name="speedLabel" Text="" Grid.Row="5" Grid.Column="1" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" VerticalOptions="Start">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span x:Name="speedTitleSpan" FontAttributes="Bold"/>
+                                <Span x:Name="speedValueSpan"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <!--#endregion-->                
+
+                    <StackLayout Orientation="Horizontal" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Padding="2">
+                        <Button x:Name="favButton" Text="Favourite" FontSize="Small" Clicked="FavButton_Clicked"/>
+                        <Button x:Name="randButton" Text="Random Mon" FontSize="Small" Clicked="RandButton_Clicked"/>
+                    </StackLayout>
+
+
+                </Grid>
+                <Label x:Name="messageLabel" FontAttributes="Bold" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+            </StackLayout>
+
+
+            <ActivityIndicator x:Name="actIndicator" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" 
+                               RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.33}" 
+                               RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.33}" 
+                               IsRunning="False" Color="Black" Scale="1.5"/>
+
+        </RelativeLayout>
+    </ContentPage.Content>
+</ContentPage>
